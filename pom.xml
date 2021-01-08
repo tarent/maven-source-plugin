@@ -26,9 +26,9 @@ under the License.
     <artifactId>maven-plugins</artifactId>
     <groupId>org.apache.maven.plugins</groupId>
     <version>33</version>
-    <relativePath>../../pom/maven/maven-plugins/pom.xml</relativePath>
   </parent>
 
+  <groupId>org.evolvis.tartools.forked</groupId>
   <artifactId>maven-source-plugin</artifactId>
   <version>3.2.1</version>
   <packaging>maven-plugin</packaging>
@@ -58,10 +58,10 @@ under the License.
   </contributors>
 
   <scm>
-    <connection>scm:git:https://gitbox.apache.org/repos/asf/maven-source-plugin.git</connection>
-    <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/maven-source-plugin.git</developerConnection>
-    <url>https://github.com/apache/maven-source-plugin/tree/${project.scm.tag}</url>
-    <tag>maven-source-plugin-3.2.1</tag>
+    <connection>scm:git:git@github.com:tarent/maven-source-plugin.git</connection>
+    <developerConnection>scm:git:git@github.com:tarent/maven-source-plugin.git</developerConnection>
+    <url>http://github.com/tarent/maven-source-plugin/tree/${project.scm.tag}/</url>
+    <tag>maven-source-plugin-3.2.1-follow-symlinks</tag>
   </scm>
   <issueManagement>
     <system>JIRA</system>
@@ -114,7 +114,7 @@ under the License.
       <version>3.5.0</version>
     </dependency>
     <dependency>
-      <groupId>org.codehaus.plexus</groupId>
+      <groupId>org.evolvis.tartools.forked</groupId>
       <artifactId>plexus-archiver</artifactId>
       <version>4.2.1</version>
     </dependency>
