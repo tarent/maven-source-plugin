@@ -36,8 +36,10 @@ import org.apache.maven.plugins.annotations.Component;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.project.MavenProjectHelper;
+import org.codehaus.plexus.archiver.ArchiveEntry;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
+import org.codehaus.plexus.archiver.ResourceIterator;
 import org.codehaus.plexus.archiver.jar.JarArchiver;
 import org.codehaus.plexus.archiver.jar.ManifestException;
 import org.codehaus.plexus.util.FileUtils;
@@ -375,6 +377,8 @@ public abstract class AbstractSourceJarMojo
             }
         }
 
+        getLog().info( "indeed running the patched plugin" );
+
         // MAPI: this should be taken from the resources plugin
         for ( Resource resource : getResources( p ) )
         {
@@ -464,6 +468,16 @@ public abstract class AbstractSourceJarMojo
         {
             throw new MojoExecutionException( "Error adding directory to source archive.", e );
         }
+        getLog().info( "resource {{{" );
+        ResourceIterator ri = archiver.getResources();
+        while (ri.hasNext()) {
+            getLog().info( "resource: " + fmt(ri.next()) );
+        }
+        getLog().info( "resource }}}" );
+    }
+
+    private static String fmt(final ArchiveEntry e) {
+    	return String.format("%d(%o)<%s>", e.getType(),e.getMode(),e.getName());
     }
 
     /**
